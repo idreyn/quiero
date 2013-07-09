@@ -3,67 +3,64 @@ quiero
 
 URLRequests made awesome in AS3
 
-= It's like jQuery.post() for AS3! =
+# It's like jQuery.post() for AS3!
 
 You know what sucks? AS3's URLRequest class, that's what. It takes about ten lines of code just to load data from a simple web service. Quiero makes that much easier. So, wanna know what the weather is like in Salem, Oregon? Me neither, but let's find it anyway:
 
-==The sucky way==
-{{{
-var request:URLRequest = new URLRequest('http://google.com/ig/api');
-var loader:URLLoader = new URLLoader();
-var variables:URLVariables = new URLVariables();
-variables.weather = 'Salem, OR';
-request.method = URLRequestMethod.GET;
-loader.addEventListener(Event.COMPLETE,onRequestComplete);
-loader.load(request);
+## The sucky way
 
-function onRequestComplete(e:Event):void
-{
-  trace(e.target.data)
-}
+  var request:URLRequest = new URLRequest('http://google.com/ig/api');
+	var loader:URLLoader = new URLLoader();
+	var variables:URLVariables = new URLVariables();
+	variables.weather = 'Salem, OR';
+	request.method = URLRequestMethod.GET;
+	loader.addEventListener(Event.COMPLETE,onRequestComplete);
+	loader.load(request);
+	
+	function onRequestComplete(e:Event):void {
+	  trace(e.target.data);
+	}
 
-}}}
 
-==The non-sucky (quiero) way==
+## The non-sucky (quiero) way
 
-{{{
-import quiero.*
-Quiero.request({url:'http://google.com/ig/api',method:'get',data:{weather:'Salem, OR'},onComplete:onRequestComplete})
-
-function onRequestComplete(e:RequesterEvent):void
-{
-  trace(e.data)
-}
-
-}}}
+	import quiero.*
+	Quiero.request({url:'http://google.com/ig/api',method:'get',data:{weather:'Salem, OR'},onComplete:onRequestComplete})
+	
+	function onRequestComplete(e:RequesterEvent):void
+	{
+	  trace(e.data)
+	}
 
 See how much easier that was? But Quiero is useful for more than just simple URLLoader requests. Hows about:
 
-==Loading images and swf's into Flash?==
-{{{
-Quiero.request({url:'mysomething.swf',loader:addChild(new Loader())});
-}}}
+### Loading images and swf's into Flash?
 
-==Playing sound?==
-{{{
-Quiero.request({url:'someSound.mp3',sound:new Sound()})
-}}}
+	Quiero.request({url:'mysomething.swf',loader:addChild(new Loader())});
 
-==Uploading files?==
-{{{
-var fileReference:FileReference = new FileReference('anImageOrSomething.png')
-Quiero.request({url:'upload.php',data:{name:fileReference.name},file:fileReference})
-}}}
-==Downloading files?==
-{{{
-Quiero.request({url:'test.jpg',downloadFile:new FileReference(),downloadName:"image"})
-}}}
 
-=Using Quiero=
+### Playing sound?
+
+	Quiero.request({url:'someSound.mp3',sound:new Sound()});
+
+
+### Uploading files?
+
+	var fileReference:FileReference = new FileReference('anImageOrSomething.png');
+	Quiero.request({url:'upload.php',data:{name:fileReference.name},file:fileReference});
+
+
+### Downloading files?
+
+	Quiero.request({url:'test.jpg',downloadFile:new FileReference(),downloadName:"image"})
+
+
+## Using Quiero
+
 Quiero has exactly one method:
-{{{
-Quiero.request(params:Object,load:Boolean=true,strict:Boolean=true):Requester
-}}}
+
+	Quiero.request(params:Object,load:Boolean=true,strict:Boolean=true):Requester
+
 But the only part you need to worry about is the params object, through which you can pass parameters to Quiero. This object itself requires only one property:
   * `url:String`: The URL that Quiero will call.
 And oodles of optional parameters. The ones you'll probably use most often are `data`, `method`, `format`, and `onComplete`. Let's take a look at these.
