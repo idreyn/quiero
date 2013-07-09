@@ -1,8 +1,3 @@
-quiero
-======
-
-URLRequests made awesome in AS3
-
 # It's like jQuery.post() for AS3!
 
 You know what sucks? AS3's URLRequest class, that's what. It takes about ten lines of code just to load data from a simple web service. Quiero makes that much easier. So, wanna know what the weather is like in Salem, Oregon? Me neither, but let's find it anyway:
