@@ -9,7 +9,7 @@ You know what sucks? AS3's URLRequest class, that's what. It takes about ten lin
 
 ## The sucky way
 
-  var request:URLRequest = new URLRequest('http://google.com/ig/api');
+	var request:URLRequest = new URLRequest('http://google.com/ig/api');
 	var loader:URLLoader = new URLLoader();
 	var variables:URLVariables = new URLVariables();
 	variables.weather = 'Salem, OR';
@@ -24,11 +24,11 @@ You know what sucks? AS3's URLRequest class, that's what. It takes about ten lin
 
 ## The non-sucky (quiero) way
 
-	import quiero.*
-	Quiero.request({url:'http://google.com/ig/api',method:'get',data:{weather:'Salem, OR'},onComplete:onRequestComplete})
+	import quiero.*;
 	
-	function onRequestComplete(e:RequesterEvent):void
-	{
+	Quiero.request({url:'http://google.com/ig/api',method:'get',data:{weather:'Salem, OR'},onComplete:onRequestComplete});
+
+	function onRequestComplete(e:RequesterEvent):void {
 	  trace(e.data)
 	}
 
