@@ -88,7 +88,7 @@ I'm not sure what will happen if you specify both `file` and `downloadFile`, but
 
 ## Hey, what about the other two parameters?
 
-	* If `false`, `load` will prevent the request from loading right away, allowing you to modify the `URLRequest` that Quiero gives you before firing it off.
+  * If `false`, `load` will prevent the request from loading right away, allowing you to modify the `URLRequest` that Quiero gives you before firing it off.
   * If `true`, `strict` will warn you about properties passed to the `params` object that don't make any sense to Quiero.
 
  
